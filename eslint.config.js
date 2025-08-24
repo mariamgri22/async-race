@@ -75,7 +75,8 @@ export default tseslint.config([
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/prefer-const': 'error',
+      // '@typescript-eslint/prefer-const': 'error',
+      "prefer-const": "error",
       '@typescript-eslint/no-inferrable-types': 'error',
 
       // Import rules (Airbnb style)
@@ -133,7 +134,13 @@ export default tseslint.config([
       'prefer-template': 'error',
       'template-curly-spacing': ['error', 'never'],
       'arrow-spacing': 'error',
-      'comma-dangle': ['error', 'es5'],
+      "comma-dangle": ["error", {
+        arrays: "always-multiline",
+        objects: "always-multiline",
+        imports: "always-multiline",
+        exports: "always-multiline",
+        functions: "never"
+      }],
       'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
       'jsx-quotes': ['error', 'prefer-double'],
