@@ -1,69 +1,64 @@
-# React + TypeScript + Vite
+# Async Race – Test Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Deployed Application:**  
+**Score:**   /400 pts  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Checklist
 
-## Expanding the ESLint configuration
+### 🚀 UI Deployment
+- [ ] UI successfully deployed on GitHub Pages / Netlify / Vercel / Cloudflare Pages.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✅ Requirements to Commits and Repository
+- [ ] All commits follow Conventional Commits.
+- [ ] Checklist included in README.md.
+- [ ] Score calculated and displayed at top of README.md.
+- [ ] Deployment link added at top of README.md.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Basic Structure (80 pts)
+- [ ] Two views implemented ("Garage" and "Winners").
+- [ ] Garage view content (Name of view, car creation/edit panel, race control panel, garage section).
+- [ ] Winners view content (Name of view, table, pagination).
+- [ ] Persistent state between views.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Garage View (90 pts)
+- [ ] CRUD operations for cars (name, color, validation, deletion from winners).
+- [ ] Color picker works and displays color.
+- [ ] 100 random cars creation with random names/colors.
+- [ ] Car management buttons (update/delete) work.
+- [ ] Pagination for garage (7 per page).
+- [ ] Extra points: empty garage handling & page redirect.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Winners View (50 pts)
+- [ ] Winners displayed correctly.
+- [ ] Pagination (10 per page).
+- [ ] Table includes №, image, name, wins, best time.
+- [ ] Sorting by wins & best time (asc/desc).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Race (170 pts)
+- [ ] Start engine animation implemented with error handling.
+- [ ] Stop engine animation returns car to initial position.
+- [ ] Responsive animation (500px+ screens).
+- [ ] Start race button starts race for all cars.
+- [ ] Reset race button resets all cars.
+- [ ] Winner announcement displayed.
+- [ ] Buttons disabled/enabled according to car state.
+- [ ] Actions handled correctly during race (delete/edit/add, navigation, etc.).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🎨 Prettier & ESLint Configuration (10 pts)
+- [ ] Prettier configured with `format` and `ci:format`.
+- [ ] ESLint configured with Airbnb style guide and strict TypeScript settings.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🌟 Overall Code Quality (100 pts)
+- [ ] Modular design, small functions, no magic numbers, good readability.
+- [ ] Extra features: custom hooks, portals, React Router (optional).
+
+---
+
+## Project Setup
+
+```bash
+npm install
+npm run dev
+
