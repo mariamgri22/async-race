@@ -1,0 +1,91 @@
+// FLEX
+@use './colors' as *;
+
+
+%flex-col-center-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-col-start-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+%flex-col-start-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+%flex-row-center-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-row-center-start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+%flex-row-center-start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+%flex-row-center-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// EFFECTS
+
+%transition-initial {
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+
+%transition-hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+// TEXT
+
+%text-overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// BORDER
+
+%neon-border {
+  border: 3px solid #fff;
+  border-radius: 16px;
+  padding: 30px 40px;
+  box-shadow:
+    0 0 3px $white-252,
+    0 0 3px $white-252,
+    0 0 32px $red-255,
+    0 0 12px $red-255,
+    0 0 45px $red-255,
+    inset 0 0 20px $red-255,
+    0 2px 0 4px $white-252,
+    0 4px 0 4px $white-252,
+    0 6px 0 4px $white-252,
+    0 8px 0 4px $white-252;
+}

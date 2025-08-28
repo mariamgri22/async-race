@@ -1,0 +1,47 @@
+@use '@/shared/styles/index.scss' as *;
+
+.nav {
+  margin: auto 0;
+  @include set-block-size(auto, auto);
+
+  @include max-1(md) {
+    order: 1;
+  }
+
+  &__list {
+    width: auto;
+    @extend %flex-col-start-start;
+    gap: 20px;
+
+    @include max-1(md) {
+      flex-direction: row;
+    }
+  }
+}
+
+.link {
+  @extend %flex-row-center-center;
+  @extend %transition-initial;
+  @include set-block-size(150px, 50px);
+  @include set-font-size(24px, 1.6, 600);
+  text-decoration: none;
+  color: $white-252;
+  padding: 10px 15px;
+  background: transparent;
+  border-radius: 8px;
+  color: $purple-249;
+  border: 3px solid $purple-249;
+  cursor: pointer;
+
+  &:hover {
+    @extend %transition-hover;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &_active {
+    color: $red-255;
+    border: 3px solid $red-255;
+  }
+}

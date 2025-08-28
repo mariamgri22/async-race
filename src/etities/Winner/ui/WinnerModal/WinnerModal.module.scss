@@ -1,0 +1,17 @@
+@use '@/shared/styles/index.scss' as *;
+
+.winner {
+  font-family: 'Quicksand', sans-serif;
+  @extend %flex-col-center-center;
+  row-gap: 20px;
+  color: $orange-255;
+
+  & > h2 {
+    @include set-font-size(36px, 1.6, 600px);
+  }
+
+  & > p {
+    @include set-block-size(100%, auto);
+    @include set-font-size(28px, 1.6, 400px);
+  }
+}

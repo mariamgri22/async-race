@@ -1,0 +1,16 @@
+@use '@/shared/styles/index.scss' as *;
+
+.fallback {
+  @extend %flex-col-center-center;
+  @include set-block-size(100%, auto);
+  background-color: $red-255_20;
+  border-radius: 8px;
+  padding: 50px 30px;
+  margin: auto;
+
+  &__msg {
+    @include set-font-size(36px, 1.3, 400);
+    color: $orange-255;
+    text-align: center;
+  }
+}

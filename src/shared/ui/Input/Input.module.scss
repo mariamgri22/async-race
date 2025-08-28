@@ -1,0 +1,39 @@
+@use '@/shared/styles/index.scss' as *;
+
+.main {
+  position: relative;
+}
+
+.input {
+  background-color: $white-252;
+
+  &_kit_primary-m {
+    @include set-block-size(100%, 40px);
+    @include set-font-size(18px, 1.2, 600);
+    border-radius: 12px;
+    color: $purple-153;
+    padding: 0 10px;
+    border: none;
+
+    &::placeholder {
+      color: $purple-153_50;
+    }
+  }
+
+  &_kit_color-m {
+    @include set-block-size(40px, 40px);
+    min-width: 40px;
+    border-radius: 6px;
+    border: 2px solid $white-252;
+  }
+}
+
+.error {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 4px;
+  z-index: 1;
+  @include set-font-size(14px, 1.2, 400);
+  color: $red-255;
+  text-align: center;
+}

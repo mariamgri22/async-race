@@ -1,0 +1,58 @@
+@use '@/shared/styles/index.scss' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  &[data-entering] {
+    animation: modal-fade 200ms;
+  }
+
+  &[data-exiting] {
+    animation: modal-fade 150ms reverse ease-in;
+  }
+
+  &_kit_default {
+    background: rgba(0 0 0 / 0.3);
+    @extend %flex-row-center-center;
+  }
+}
+
+.modal {
+  position: relative;
+  min-width: 320px;
+  max-width: 97vw;
+  overflow: hidden;
+
+  &[data-entering] {
+    animation: modal-zoom 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  &_kit_default {
+    @extend %neon-border;
+    background: $purple-249_50;
+    outline: none;
+    padding: 30px 30px;
+  }
+}
+
+@keyframes modal-zoom {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

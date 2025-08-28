@@ -1,0 +1,63 @@
+@use 'sass:map';
+
+$breakpoints: (
+  sm: 360px,
+  md: 768px,
+  lg: 1200px,
+  xl: 1440px,
+  xxl: 1920px,
+);
+
+$container-max-widths: (
+  sm: calc(338 / 360 * 100%),
+  md: calc(704 / 768 * 100%),
+  lg: calc(1088 / 1200 * 100%),
+  xl: calc(1312 / 1440 * 100%),
+  xxl: calc(1592 / 1920 * 100%),
+  unlimited: 100%,
+);
+
+@mixin min($point) {
+  @if map.has-key($breakpoints, $point) {
+    @media (min-width: map.get($breakpoints, $point)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$point}.";
+  }
+}
+
+@mixin max-1($point) {
+  @if map.has-key($breakpoints, $point) {
+    @media (max-width: calc(map.get($breakpoints, $point) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$point}.";
+  }
+}
+
+%bp-width {
+  margin: 0 auto;
+  max-width: 1592px;
+
+  @include max-1(sm) {
+    width: 97%;
+  }
+
+  @include min(sm) {
+    width: map.get($container-max-widths, sm);
+  }
+  @include min(md) {
+    width: map.get($container-max-widths, md);
+  }
+  @include min(lg) {
+    width: map.get($container-max-widths, lg);
+  }
+  @include min(xl) {
+    width: map.get($container-max-widths, xl);
+  }
+  @include min(xxl) {
+    width: map.get($container-max-widths, xxl);
+  }
+}

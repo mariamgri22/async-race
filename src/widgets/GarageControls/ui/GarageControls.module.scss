@@ -1,0 +1,47 @@
+@use '@/shared/styles/index.scss' as *;
+
+.controls {
+  @include set-block-size(100%, auto);
+  @extend %flex-row-center-between;
+  gap: 10px;
+
+  @include max-1(xl) {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  @include max-1(md) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.play {
+  order: 1;
+  @extend %flex-row-center-start;
+  gap: 30px;
+  @include max-1(md) {
+    gap: 15px;
+  }
+}
+
+.mutate {
+  order: 2;
+  @extend %flex-row-center-start;
+  gap: 50px;
+  @include max-1(xl) {
+    order: 3;
+    gap: 30px;
+  }
+  @include max-1(md) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.generate {
+  order: 3;
+  @include max-1(xl) {
+    order: 2;
+  }
+}

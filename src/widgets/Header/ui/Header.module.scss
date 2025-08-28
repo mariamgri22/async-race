@@ -1,0 +1,34 @@
+@use '@/shared/styles/index.scss' as *;
+
+.header {
+  @extend %bp-width;
+  @extend %flex-row-center-start;
+  column-gap: 30px;
+  padding: 30px 0;
+
+  @include max-1(md) {
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  &__shevrons {
+    @include set-block-size(100%, 50px);
+    background-image: url('@/shared/assets/icons/chevrons-red-255.svg');
+    background-position: 0 0;
+    background-repeat: space repeat;
+    background-size: auto 75px;
+
+    &_bottom {
+      margin: auto 0 0;
+    }
+
+    &_top {
+      margin: 0 0 auto;
+      transform: rotate(180deg);
+    }
+
+    @include max-1(md) {
+      display: none;
+    }
+  }
+}

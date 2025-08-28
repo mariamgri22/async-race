@@ -1,0 +1,91 @@
+@use '@/shared/styles/index.scss' as *;
+
+.button {
+  @extend %flex-row-center-center;
+  @extend %transition-initial;
+  cursor: pointer;
+
+  &[data-hovered] {
+    @extend %transition-hover;
+  }
+
+  &[data-focus-visible] {
+    border-width: 3px;
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &_kit_clear {
+    @include set-block-size(auto, auto);
+    background: transparent;
+    border: none;
+    padding: 6px 6px;
+    gap: 10px;
+  }
+
+  &_kit_primary-m-green,
+  &_kit_primary-m-purple {
+    @include set-font-size(18px, 1.2, 600);
+    @include set-block-size(auto, 40px);
+    border-radius: 6px;
+    padding: 6px 12px;
+    gap: 10px;
+    background: transparent;
+  }
+
+  &_kit_primary-m-green {
+    color: $green-155;
+    border: 2px solid $green-155;
+  }
+
+  &_kit_primary-m-purple {
+    color: $purple-249;
+    border: 2px solid $purple-249;
+  }
+
+  &_kit_primary-s-blue,
+  &_kit_primary-s-purple,
+  &_kit_primary-s-yellow,
+  &_kit_primary-s-green {
+    @include set-font-size(14px, 1.2, 600);
+    @include set-block-size(auto, 30px);
+    border-radius: 4px;
+    padding: 3px 4px;
+    gap: 6px;
+    background: transparent;
+  }
+
+  &_kit_primary-s-blue {
+    color: $blue-157;
+    border: 1px solid $blue-157;
+  }
+
+  &_kit_primary-s-purple {
+    color: $purple-249;
+    border: 1px solid $purple-249;
+  }
+
+  &_kit_primary-s-yellow {
+    color: $yellow-239;
+    border: 1px solid $yellow-239;
+  }
+
+  &_kit_primary-s-green {
+    color: $green-155;
+    border: 1px solid $green-155;
+  }
+
+  &_kit_table-m-yellow {
+    @extend %flex-row-center-start;
+    @include set-font-size(24px, 1.3, 600);
+    @include set-block-size(auto, auto);
+    background-color: transparent;
+    text-align: left;
+    border: none;
+    color:$yellow-239;
+    padding: 0;
+  }
+}

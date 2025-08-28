@@ -1,0 +1,7 @@
+@use '@/shared/styles/index.scss' as *;
+
+
+.total {
+  color: $purple-249;
+  @include set-font-size(36px, 1.3, 500);
+}

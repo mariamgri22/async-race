@@ -1,0 +1,26 @@
+@use '@/shared/styles/index.scss' as *;
+
+.pagination {
+  @include set-block-size(auto, 50px);
+  @extend %flex-row-center-center;
+  gap: 30px;
+
+  &__prev,
+  &__next {
+    color: $purple-249;
+    @include set-block-size(auto, auto);
+  }
+
+  &__prev {
+    transform: rotate(180deg);
+  }
+
+  &__next {
+    transform: rotate(0deg);
+  }
+
+  &__page {
+    color: $purple-249;
+    @include set-font-size(36px, 1.3, 500);
+  }
+}

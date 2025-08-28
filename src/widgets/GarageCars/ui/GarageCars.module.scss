@@ -1,0 +1,96 @@
+@use '@/shared/styles/index.scss' as *;
+
+.garage {
+  position: relative;
+  @include set-block-size(100%, auto);
+  @extend %flex-col-start-start;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 210px;
+    display: block;
+    width: 1px;
+    height: 100%;
+    border-left: 2px dotted $white-252;
+
+    @include max-1(md) {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 90px;
+    display: block;
+    width: 30px;
+    height: 100%;
+    opacity: 0.5;
+
+    background-color: #fff;
+    background-image: linear-gradient(
+        45deg,
+        #000 25%,
+        transparent 25%,
+        transparent 75%,
+        #000 75%,
+        #000
+      ),
+      linear-gradient(-45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+    background-size: 10px 10px;
+  }
+}
+
+.item {
+  @include set-block-size(100%, auto);
+  @extend %flex-row-center-start;
+  border-bottom: 2px solid $white-252;
+  padding: 10px 0;
+  gap: 10px;
+  overflow: hidden;
+
+  &__controls {
+    width: auto;
+    display: grid;
+    grid-template-columns: 75px 30px;
+    grid-auto-rows: auto;
+    gap: 8px;
+    grid-template-areas:
+      'select drive'
+      'delete stop';
+
+    @include max-1(md) {
+      grid-template-columns: 75px 75px 30px 30px;
+      grid-template-areas:
+        'select delete stop drive';
+    }
+  }
+  
+  &__select {
+    grid-area: select;
+  }
+  &__drive {
+    grid-area: drive;
+  }
+  &__delete {
+    grid-area: delete;
+  }
+  &__stop {
+    grid-area: stop;
+  }
+
+  &__track {
+    @include set-block-size(100%, auto);
+    @extend %flex-row-center-start;
+    @extend %text-overflow-ellipsis;
+    gap: 30px;
+  }
+
+  @include max-1(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

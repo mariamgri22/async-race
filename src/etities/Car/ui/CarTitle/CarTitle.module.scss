@@ -1,0 +1,38 @@
+@use '@/shared/styles/index.scss' as *;
+
+.container {
+  position: relative;
+  padding-left: 60px;
+}
+
+.title {
+  @include set-font-size(46px, 1.6, 300);
+  // @extend %flex-row-center-start;
+  @extend %text-overflow-ellipsis;
+
+  @include max-1(md) {
+    @include set-font-size(28px, 1.6, 300);
+  }
+}
+
+.green-light,
+.check-engine {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  @extend %flex-row-center-center;
+  @include set-block-size(50px, 30px);
+
+  &__icon {
+    width: fit-content;
+  }
+}
+
+.green-light {
+  color: $green-1;
+}
+
+.check-engine {
+  color: $orange-255;
+}

@@ -1,0 +1,6 @@
+@use '@/shared/styles/index.scss' as *;
+
+.form {
+  @extend %flex-row-center-start;
+  gap: 10px;
+}

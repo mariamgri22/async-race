@@ -1,0 +1,10 @@
+@mixin set-block-size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin set-font-size($size, $line, $weight: 400) {
+  font-size: $size;
+  line-height: $line;
+  font-weight: $weight;
+}

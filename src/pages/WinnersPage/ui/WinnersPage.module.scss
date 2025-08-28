@@ -1,0 +1,15 @@
+@use '@/shared/styles/index.scss' as *;
+
+.main {
+  @extend %bp-width;
+  @extend %flex-col-start-start;
+  gap: 25px;
+  padding: 50px 0;
+  overflow-x: scroll;
+
+  &__header {
+    @include set-font-size(58px, 1.3, 600);
+    color: $white-252;
+    align-self: flex-start;
+  }
+}
