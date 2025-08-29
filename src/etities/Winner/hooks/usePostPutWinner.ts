@@ -8,14 +8,11 @@ import { selectWinner } from '../model/selectors';
 import { winnerActions } from '../model/slice';
 
 export function usePostPutWinner() {
-  // 0. Init
-
   const winner = useSelector(selectWinner.currentWinner);
   const isCurrentWinnerPosted = useSelector(selectWinner.isCurrentWinnerPosted);
   const raceStartTime = useSelector(selectWinner.currentRaceStartTime);
 
   const dispatch = useDispatch();
-
   const {
     data: wonBeforeData,
     isSuccess: wonBeforeSuccess,
@@ -25,8 +22,6 @@ export function usePostPutWinner() {
   const [putWinner] = winnerAPI.usePutWinnerMutation();
 
   const [isLoading, setIsLoading] = useState(false);
-
-  // 1. Post/Put winner
 
   useEffect(() => {
     if (!winner || !raceStartTime || isCurrentWinnerPosted || wonBeforeFetching) return;

@@ -12,8 +12,6 @@ import styles from './GarageBottomControls.module.scss';
 type Props = object;
 
 export const GarageBottomControls = ({}: Props) => {
-  // 0. Init
-
   const dispatch = useDispatch();
   const params = useSelector(selectCar.carsQueryParams);
   const { data, isSuccess, isLoading } = carAPI.useGetCarsQuery(params);
@@ -24,9 +22,6 @@ export const GarageBottomControls = ({}: Props) => {
   const limit = params[CarsParams.LIMIT];
   const totalCount = data?.totalCount;
 
-  // 1. Fetch and set carsServer as carsClient if there is differense,
-  // usually on page scroll, cars adding or removing, then reset the winner.
-
   useEffect(() => {
     if (isLoading || !isSuccess) return;
     if (!carsServer || !carClientIDs) return;
@@ -36,8 +31,6 @@ export const GarageBottomControls = ({}: Props) => {
     dispatch(winnerActions.mutateCurrentWinner(null));
     dispatch(winnerActions.setCurrentRaceStartTime(null));
   }, [isLoading, carsServer, dispatch]);
-
-  // 2. Render
 
   return (
     <section className={styles.section}>

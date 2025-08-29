@@ -1,9 +1,4 @@
 import clsx from 'clsx';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-
-import { useDispatch, useSelector } from '@/app/redux/hooks';
-import { CarRequest, carAPI, carActions, selectCar } from '@/etities/Car';
 import { Button, ButtonKits } from '@/shared/ui/Button/Button';
 import { Input, InputKits, InputTypes } from '@/shared/ui/Input/Input';
 import { validationOptions } from '@/shared/utils/validationForm';
@@ -11,54 +6,19 @@ import { validationOptions } from '@/shared/utils/validationForm';
 import { InputNames } from '../types/types';
 
 import styles from './CarUpdate.module.scss';
+import { useCarUpdate } from '@/features/CarUpdate/hooks/useCarUpdate';
 
 type Props = {
   className?: string;
 };
 
 export const CarUpdate = ({ className }: Props) => {
-  // 0. Init
-
-  const dispatch = useDispatch();
-  const car = useSelector(selectCar.selected);
-  const [putCar, { data, isSuccess }] = carAPI.useUpdateCarMutation();
-
-  const defaultFormValues = {
-    [InputNames.NAME]: car?.name || '',
-    [InputNames.COLOR]: car?.color || '#ffffff',
-  };
-
+  const { form, updateCar, isChanged } = useCarUpdate();
   const {
     register,
     handleSubmit,
-    watch,
-    reset,
     formState: { errors, isValid },
-  } = useForm<CarRequest>({
-    mode: 'onChange',
-    criteriaMode: 'all',
-    defaultValues: defaultFormValues,
-  });
-
-  const isChanged = watch(InputNames.NAME) !== car?.name || watch(InputNames.COLOR) !== car?.color;
-
-  // 1. Update
-
-  useEffect(() => {
-    reset(defaultFormValues);
-  }, [car, reset]);
-
-  function updateCar(data: CarRequest) {
-    if (!car) return;
-    putCar({ id: car?.id, data });
-    dispatch(carActions.selectCar(null));
-  }
-
-  useEffect(() => {
-    if (isSuccess && data) dispatch(carActions.mutateCar(data));
-  }, [data, isSuccess, dispatch]);
-
-  // Render
+  } = form;
 
   return (
     <form className={clsx(styles.form, className)} onSubmit={handleSubmit(updateCar)}>

@@ -11,12 +11,8 @@ type Props = {
 };
 
 export const EngineDrive = ({ carID, className }: Props) => {
-  // 0. Init
-
   const car = useSelector(selectCar.car(carID));
   const { startDriveEngine, isLoading } = useStartDriveEngine({ carID });
-
-  // 1. Render
 
   return (
     <Button

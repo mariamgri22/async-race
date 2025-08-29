@@ -18,7 +18,7 @@ export const CarsGenerate = ({ className }: Props) => {
     for (let i = 0; i < NUMBER_OF_CARS; i++) {
       const car: CarRequest = {
         name: `${faker.vehicle.manufacturer()} ${faker.vehicle.model()}`,
-        color: faker.internet.color(),
+        color: faker.color.rgb({ prefix: '#' }),
       };
       postCar(car);
     }

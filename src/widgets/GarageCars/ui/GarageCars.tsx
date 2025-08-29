@@ -1,54 +1,19 @@
-import { useEffect, useRef } from 'react';
-
-import { useDispatch, useSelector } from '@/app/redux/hooks';
-import {
-  CarBodyAnimated,
-  CarResponse,
-  CarTitle,
-  carAPI,
-  carActions,
-  selectCar,
-} from '@/etities/Car';
+import { useRef } from 'react';
+import { CarBodyAnimated, CarTitle } from '@/etities/Car';
 import { CarDelete } from '@/features/CarDelete';
 import { CarSelect } from '@/features/CarSelect';
 import { EngineDrive } from '@/features/EngineDrive';
 import { EngineStop } from '@/features/EngineStop';
 
 import styles from './GarageCars.module.scss';
+import { useGarageCars } from '../hooks/useGarageCars';
 
 type Props = object;
 
 export const GarageCars = ({}: Props) => {
-  // 0. Init
-
-  const dispatch = useDispatch();
-  const cars = useSelector(selectCar.cars);
-  const carIDs = useSelector(selectCar.carIDs);
-  const selectedID = useSelector(selectCar.selected)?.id;
-
-  const carsQueryParams = useSelector(selectCar.carsQueryParams);
-  const { data, isSuccess, isError } = carAPI.useGetCarsQuery(carsQueryParams);
-  const carsServer = data?.data;
-
-  // 1. Fetch and set cars only if there are no cars
-  useEffect(() => {
-    if (!isSuccess || cars) return;
-    dispatch(carActions.setCars(carsServer as CarResponse[]));
-  }, [isSuccess, cars, dispatch]);
-
-  useEffect(() => {
-    if (isError)
-      throw new Error(
-        'Error while fetching cars | check if the mock server is running, see Readme.md.'
-      );
-  }, [isError]);
-
-  // 2. Track width
-
+  const { cars, carIDs, selectedID } = useGarageCars();
   const trackRef = useRef<HTMLDivElement>(null);
   const trackWidth = trackRef.current?.offsetWidth;
-
-  // 3. Render
 
   if (!cars) return null;
 

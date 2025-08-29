@@ -11,31 +11,16 @@ type Props = {
 };
 
 export const Pagination = ({ currentPage, limit, totalCount, scrollPage }: Props) => {
-  // 1. Helpers
+  const hasNext = totalCount > 0 && limit > 0 && currentPage * limit < totalCount;
+  const hasPrev = currentPage > 1;
 
-  function hasNextPage() {
-    if (!totalCount || !limit || !currentPage) return false;
-    return currentPage * limit < totalCount;
-  }
+  const handleNext = () => {
+    if (hasNext) scrollPage(currentPage + 1);
+  };
 
-  function hasPrevPage() {
-    if (!totalCount || !limit || !currentPage) return false;
-    return currentPage > 1;
-  }
-
-  // 2. Actions
-
-  function handleNext() {
-    if (!hasNextPage()) return;
-    scrollPage(currentPage + 1);
-  }
-
-  function handlePrev() {
-    if (!hasPrevPage()) return;
-    scrollPage(currentPage - 1);
-  }
-
-  // 3. Render
+  const handlePrev = () => {
+    if (hasPrev) scrollPage(currentPage - 1);
+  };
 
   return (
     <article className={styles.pagination}>
@@ -43,7 +28,8 @@ export const Pagination = ({ currentPage, limit, totalCount, scrollPage }: Props
         kit={ButtonKits.CLEAR}
         className={styles.pagination__prev}
         onClick={handlePrev}
-        disabled={!hasPrevPage()}
+        disabled={!hasPrev}
+        aria-label="Previous Page"
       >
         <PlayIcon />
       </Button>
@@ -52,7 +38,8 @@ export const Pagination = ({ currentPage, limit, totalCount, scrollPage }: Props
         kit={ButtonKits.CLEAR}
         className={styles.pagination__next}
         onClick={handleNext}
-        disabled={!hasNextPage()}
+        disabled={!hasNext}
+        aria-label="Next Page"
       >
         <PlayIcon />
       </Button>

@@ -31,14 +31,8 @@
     opacity: 0.5;
 
     background-color: #fff;
-    background-image: linear-gradient(
-        45deg,
-        #000 25%,
-        transparent 25%,
-        transparent 75%,
-        #000 75%,
-        #000
-      ),
+    background-image:
+      linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
       linear-gradient(-45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
     background-size: 10px 10px;
   }
@@ -64,11 +58,10 @@
 
     @include max-1(md) {
       grid-template-columns: 75px 75px 30px 30px;
-      grid-template-areas:
-        'select delete stop drive';
+      grid-template-areas: 'select delete stop drive';
     }
   }
-  
+
   &__select {
     grid-area: select;
   }

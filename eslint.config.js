@@ -94,7 +94,7 @@ export default tseslint.config([
       'import/prefer-default-export': 'off',
 
       // Custom rules from your config
-      // 'max-lines-per-function': ['error', 40],
+      'max-lines-per-function': ['error', 40],
       'no-magic-numbers': [
         'error',
         {

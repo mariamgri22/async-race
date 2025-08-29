@@ -10,17 +10,12 @@ type Props = {
 };
 
 export function useStopEngineList({ carIDs }: Props) {
-  // 0. Init
-
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [stopEngine] = engineAPI.useStopEngineMutation();
 
-  // 1. Actions
-
   const stopEngineList = useCallback(() => {
     setIsLoading(true);
-
     try {
       Promise.all(
         carIDs.map((id) =>

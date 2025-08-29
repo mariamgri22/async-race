@@ -11,8 +11,6 @@ import styles from './WinnersTable.module.scss';
 type Props = object;
 
 export const WinnersTable = ({}: Props) => {
-  // 0. Init
-
   const params = useSelector(selectWinner.winnersQueryParams);
   const { data, isError } = winnerAPI.useGetWinnersQuery(params);
   const winners = data?.data;
@@ -23,8 +21,6 @@ export const WinnersTable = ({}: Props) => {
         'Error while fetching winners | check if the mock server is running, see Readme.md.'
       );
   }, [isError]);
-
-  // 1. Render
 
   if (!winners) return <p>Loading...</p>;
 
