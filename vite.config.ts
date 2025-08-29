@@ -11,5 +11,5 @@ export default defineConfig({
     },
   },
   plugins: [react(), svgr()],
-  base: process.env.NODE_ENV === 'production' ? '/async-race/' : '/',
+  base: '/',
 });
