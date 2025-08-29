@@ -105,24 +105,9 @@ export default tseslint.config([
         },
       ],
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-      // 'jest/no-focused-tests': 'off',
-
-      // Prettier
+    
       'prettier/prettier': 'error',
       'no-empty-pattern': 'off',
-      // '@typescript-eslint/ban-types': 'off',
     },
   },
-  // Testing files
-  // {
-  //   files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-  //   plugins: {
-  //     'testing-library': testingLibrary,
-  //     jest,
-  //   },
-  //   rules: {
-  //     ...testingLibrary.configs.react.rules,
-  //     'no-magic-numbers': 'off',
-  //   },
-  // },
 ]);
